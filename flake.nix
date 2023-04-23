@@ -29,13 +29,12 @@
     in {
       nominatim = pkgs.rPackages.buildRPackage {
         name = "nominatim";
-        # src = pkgs.fetchFromGitHub {
-        #   owner = "hrbrmstr";
-        #   repo = "nominatim";
-        #   rev = "5c2baa9da26bc81eb769c39f6eb64fa81db01d34";
-        #   sha256 = "mHkLo07mh1fgox7kfrUZg/IDSQQKimFmzDajyrBNmzw=";
-        # };
-        src = ./.;
+        src = pkgs.fetchFromGitHub {
+          owner = "hrbrmstr";
+          repo = "nominatim";
+          rev = "5c2baa9da26bc81eb769c39f6eb64fa81db01d34";
+          sha256 = "mHkLo07mh1fgox7kfrUZg/IDSQQKimFmzDajyrBNmzw=";
+        };
         propagatedBuildInputs = with pkgs.rPackages; [
           httr
           dplyr
@@ -54,7 +53,6 @@
       default = pkgs.mkShell {
         buildInputs = with pkgs; [
           R
-          rPackages.nominatim
           rPackages.httr
           rPackages.dplyr
           rPackages.pbapply
